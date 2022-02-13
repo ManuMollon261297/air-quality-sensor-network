@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Nodes</h1>
+  {% if node_list %}
+  <ul>
+    {% for node in node_list %}
+      <li>
+        Node: <a href="{{ node.get_absolute_url }}">{{ node.node_id }}</a> | Location: {{node.location}} | Owner: {{node.user_id}}
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no nodes in the database.</p>
+  {% endif %}
+{% endblock %}

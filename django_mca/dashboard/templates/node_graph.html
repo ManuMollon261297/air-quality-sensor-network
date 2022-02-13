@@ -1,0 +1,40 @@
+{% extends "base_generic.html" %}
+
+{% block additional_styles %}
+<style>
+    body {
+      background-image: none;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+  {% block additional_styles2 %}
+  <style>
+      body {
+        background-color: rgb(188, 202, 212);
+      }
+  </style>
+  {% endblock %}
+  <h1>Node {{ node_pk }} Graphs:</h1>
+
+  <div style="width:1000;height:100">
+    {{ pm_graph_div|safe }}
+  </div>
+
+  <div style="width:1000;height:100">
+    {{ t_graph_div|safe }}
+  </div>
+
+  <div style="width:1000;height:100">
+    {{ h_graph_div|safe }}
+  </div>
+
+  <div style="width:1000;height:100">
+    {{ p_graph_div|safe }}
+  </div>
+
+  <div style="width:1000;height:100">
+    {{ v_graph_div|safe }}
+  </div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>MCA Home Page</h1>
+  <p>Welcome to the MCA Project, a website that displays data retrieved from air quality sensors.</p>
+  <h2>Overall Metrics</h2>
+  <p>Data collected to date:</p>
+  <ul>
+    <li><strong>Nodes:</strong> {{ num_nodes }}</li>
+    <li><strong>Users:</strong> {{ num_users }}</li>
+    <li><strong>Data Logs:</strong> {{ num_logs }}</li>
+  </ul>
+  <p>You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}.</p>
+{% endblock %}

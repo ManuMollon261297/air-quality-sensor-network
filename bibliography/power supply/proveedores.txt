@@ -1,0 +1,1 @@
+regulador switching LM3578 ----> SYC: usd$3.5

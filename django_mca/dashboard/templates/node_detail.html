@@ -1,0 +1,53 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Node: {{ node_node_id }}</h1>
+
+  <html>
+  <head></head>
+  <body>
+      <div style="width: 100%;">
+          <div style="width: 40%; height: 200px; float: left"> 
+            <p><strong>Owner:</strong> <a href="">{{ node_user_id }}</a></p> <!-- author detail link not yet defined -->
+            <p><strong>Location:</strong> {{ node_location }}</p>
+            <p><strong>Date of creation:</strong> {{ node_created_at }}</p>
+            <p><strong>Last Updated:</strong> {{ node_updated_at }}</p>
+            <p><a href="{{ node.get_absolute_url }}/graphs">Measurement Graphs</a></p>
+          </div>
+          <div style="margin-left: 40%; height: 200px;"> 
+            <div style="margin-left:0px;margin-right:150px;margin-top:0px;text-align:center;">
+              <div style="background-color: {{ AQI_color }}; padding: 10px; border: 3px solid black;">
+                <div id="aqibox">
+                  <strong>Current AQI:</strong> <br>
+                  {{ current_aqi }} <br>
+                  {{ AQI_text }}
+                </div>
+              </div>
+            </div>
+            <div style="margin-left:0px;margin-right:150px;margin-top:10px;text-align:center;">
+              <div style="background-color: {{ battery_color }} ; padding: 10px; border: 3px solid black;">
+                <div id="batterybox">
+                  <strong>Current Battery Level:</strong> <br>
+                  {{ current_battery_level }} %
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+  </body>
+  </html>
+
+  <div style="margin-left:20px;margin-top:20px">
+    <h4>Measurements</h4>
+
+    {% for measurement in page_obj %}
+      <hr>
+      <p><strong>Measurement time:</strong> {{ measurement.measured_at }}</p>
+      <p><strong>PM:</strong> {{ measurement.pm_value }} µg/m<sup>3</p>
+      <p><strong>Temperature:</strong> {{ measurement.t_value }} °C</p>
+      <p><strong>Humidity:</strong> RH {{ measurement.h_value }}%</p>
+      <p><strong>Pressure:</strong> {{ measurement.p_value }} hPa</p>
+      <p><strong>Battery Level:</strong> {{ measurement.v_value }}%</p>
+    {% endfor %}
+  </div>
+{% endblock %}
